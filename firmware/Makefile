@@ -7,9 +7,9 @@
 # TARGET=atmega8    HFUSE=0xc9  LFUSE=0xef
 # TARGET=atmega48   HFUSE=0xdd  LFUSE=0xff
 # TARGET=at90s2313
-TARGET=atmega8
-HFUSE=0xc9
-LFUSE=0xef
+TARGET=atmega88 # atmega8
+HFUSE=0xdd # 0xc9
+LFUSE=oxff # 0xef
 
 
 # ISP=bsd      PORT=/dev/parport0
@@ -17,8 +17,8 @@ LFUSE=0xef
 # ISP=stk500   PORT=/dev/ttyS1
 # ISP=usbasp   PORT=/dev/usb/ttyUSB0
 # ISP=stk500v2 PORT=/dev/ttyUSB0
-ISP=usbasp
-PORT=/dev/usb/ttyUSB0
+ISP=stk500v1 # ISP=usbasp
+PORT=/dev/cu.usbserial-14320 # PORT=/dev/usb/ttyUSB0
 
 help:
 	@echo "Usage: make                same as make help"

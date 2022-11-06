@@ -307,7 +307,9 @@ int main(void) {
 	PORTD = 0;
 	PORTB = 0;
 	/* all outputs except PD2 = INT0 */
-	DDRD = ~(1 << 2);
+	// DDRD = ~(1 << 2);
+  // https://www.admindu.de/wordpress/?p=1426
+  DDRD = ~(1 << 2)&~(1 << 3);
 
 	/* output SE0 for USB reset */
 	DDRB = ~0;
