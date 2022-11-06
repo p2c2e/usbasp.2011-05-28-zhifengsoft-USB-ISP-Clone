@@ -4,6 +4,8 @@ This project is to
 I had bought a cheap (~3USD) USB ISP v2.0 programmer to simplify my workflow.
 I am on a Mac (Monterey) and found that USB ISP was not being detected properly.
 
+TL;DR - If you know how to flash new firmware using another existing ISP Programmer - down the 'firmware/main.hex' and flash it onto the USB ISP device
+
 Symptoms:
 - "USBasp" programmer in Arduino IDE does not work
 - avrdude errors indicate issues with VID/PID values (it was vid=0x03EB & pid=0xc8b4. Not as an USBasp with vid=0x16c0 & pid=0x05dc) 
