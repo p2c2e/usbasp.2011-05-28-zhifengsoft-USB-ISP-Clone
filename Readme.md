@@ -18,15 +18,15 @@ Googling led to https://www.sciencetronics.com/greenphotons/?p=938 and few other
 
 This repository contains the modifications done to the code available at https://www.fischl.de/usbasp/ as well as the compiled "main.hex" (so, technically you just need to download that file and flash it)
 ## Building hex file by yourself. 
-The Original Readme covers in - it is below my notes. 
+The Original Readme content covers it - it is below my notes. 
 - It involves Editing the Makefile to set the right programmer and usb dev/port details
 - Rnning "make main.hex" from within the firmware subfolder
 
-What needs to happen _after_ you have main.hex file?
+## What needs to happen _after_ you have main.hex file?
 
 1. Remove the aluminium cover of the USB ISP device and either switch jumpers OR short the two points marked for "UP" (or update) mode
 2. Prep _some other ISP_ device - I Used a spare Arduino Nano V3 as the ISP
-3. Hook up the ISP programmer to 6 SPI pins - Vcc, GND, SCK, MOSI, MISO, RST
+3. Hook up the ISP programmer to 6 SPI pins - Vcc, GND, SCK, MOSI, MISO, RST (In case of the Nano as ISP - the coresponding pins wer: 5V, GND, D13, D11, D12, D10 )
 4. Ensure you have a 10uF capacitor between the GND and RST pins OF THE ISP PROGRAMMER (in case you are using one of Arduino devices for this purpose)
    NOT doing this would result in things like Avrdude complaining Device Signature/Expected Signature mismatch. I saw that the Device Signature kept changing for each run indicating some transient issues!
 5. Run the following command for reflashing the USB ISP device
