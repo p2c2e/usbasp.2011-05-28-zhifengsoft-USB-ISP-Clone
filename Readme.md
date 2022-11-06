@@ -1,25 +1,29 @@
 # GETTING THIS TO WORK - USB ISP firmware hex file for Zhifengsoft clone - using the ATmega88 chipset
 
-Context: 
+## Context:
 I had bought a cheap (~3USD) USB ISP v2.0 programmer to simplify my workflow.
 I am on a Mac (Monterey) and found that USB ISP was not being detected properly. i.e. When I select "USBasp" from within Arduino and using it to upload sketches was not working
 
 TL;DR - If you know how to flash new firmware using another existing ISP Programmer - down the 'firmware/main.hex' and flash it onto the USB ISP device
 
-Symptoms:
+## Symptoms:
 - "USBasp" programmer in Arduino IDE does not work
-- avrdude errors indicate issues with VID/PID values (it was vid=0x03EB & pid=0xc8b4. Not as an USBasp with vid=0x16c0 & pid=0x05dc) 
+- avrdude errors indicate issues with VID/PID values (it was vid=0x03EB & pid=0xc8b4. Not as an USBasp with vid=0x16c0 & pid=0x05dc)
 - "System Information > USB" on Mac shows that the device is from Zhifengsoft and they have some custom ProgISP software available on Windows
 - "Red LED" light when powered on. (Post the firmware fix it is the Blue LED that is on)
 
 Googling led to https://www.sciencetronics.com/greenphotons/?p=938 and few other sites, that indicated few things:
 - Newer USB ISP clones have ATmega88 rather than Atmega8 chips
-- The drivers from before had issues and hence we need a new firmware 
+- The drivers from before had issues and hence we need a new firmware
 
 This repository contains the modifications done to the code available at https://www.fischl.de/usbasp/ as well as the compiled "main.hex" (so, technically you just need to download that file and flash it)
+## Building hex file by yourself. 
+The Original Readme covers in - it is below my notes. 
+- It involves Editing the Makefile to set the right programmer and usb dev/port details
+- Rnning "make main.hex" from within the firmware subfolder
 
 What needs to happen _after_ you have main.hex file?
- 
+
 1. Remove the aluminium cover of the USB ISP device and either switch jumpers OR short the two points marked for "UP" (or update) mode
 2. Prep _some other ISP_ device - I Used a spare Arduino Nano V3 as the ISP
 3. Hook up the ISP programmer to 6 SPI pins - Vcc, GND, SCK, MOSI, MISO, RST
@@ -27,7 +31,7 @@ What needs to happen _after_ you have main.hex file?
    NOT doing this would result in things like Avrdude complaining Device Signature/Expected Signature mismatch. I saw that the Device Signature kept changing for each run indicating some transient issues!
 5. Run the following command for reflashing the USB ISP device
 
-# REMEMBER : 10uF between RST and GND on the programmer (in my case a Arduino Nano V3 acting as ISP)
+*REMEMBER : 10uF between RST and GND on the programmer (in my case a Arduino Nano V3 acting as ISP)*
 Replace the correct USB device path connected to the ISP Programmer (that in-turn is connected to the USB ISP)
 ```
 avrdude -cavrisp  -pm88  -P /dev/cu.usbserial-<something> -b19200  -U flash:w:main.hex:i
@@ -45,22 +49,22 @@ usbaspclone.program.tool=avrdude
 usbaspclone.program.extra_params=-Pusb
 ```
 7. Now you should see a new "Programmer" listd on Arduino IDE (you may need to restart the IDE, after the above changes
-8. If the Flashing went well, connecting the USB ISP device will now be recognized as a "USBasp" device and NOT as "USBHID" - and the LED will be Blue on the USB ISP 
+8. If the Flashing went well, connecting the USB ISP device will now be recognized as a "USBasp" device and NOT as "USBHID" - and the LED will be Blue on the USB ISP
 
 # How to use the USB ISP programmer
 1. Wire the USB ISP device pins to the target Board
 2. Select the Target Board and Processor details on Arduino IDE
 3. Select "USBasp Clone" in the Programmer submenu
-4. Compile any sketch 
+4. Compile any sketch
 5. Use 'Upload using programmer' submenu under 'Sketch' to upload the sketch/compiled-code
 
 
 # Additional Reading:
-# https://www-admindu-de.translate.goog/wordpress/?p=1426&_x_tr_sl=de&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=sc 
-# http://www.martyncurrey.com/arduino-nano-as-an-isp-programmer/
-# https://irq5.io/2017/07/25/making-usbasp-chinese-clones-usable/
+https://www-admindu-de.translate.goog/wordpress/?p=1426&_x_tr_sl=de&_x_tr_tl=en&_x_tr_hl=en&_x_tr_pto=sc
+http://www.martyncurrey.com/arduino-nano-as-an-isp-programmer/
+https://irq5.io/2017/07/25/making-usbasp-chinese-clones-usable/
 
-ORIGINAL README is BELOW THIS LINE:
+## ORIGINAL README is BELOW THIS LINE:
 --------------------------------------------------------------------------------
 This is the README file for USBasp.
 
