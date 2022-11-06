@@ -1,8 +1,8 @@
 # GETTING THIS TO WORK - USB ISP firmware hex file for Zhifengsoft clone - using the ATmega88 chipset
 
-This project is to 
+Context: 
 I had bought a cheap (~3USD) USB ISP v2.0 programmer to simplify my workflow.
-I am on a Mac (Monterey) and found that USB ISP was not being detected properly.
+I am on a Mac (Monterey) and found that USB ISP was not being detected properly. i.e. When I select "USBasp" from within Arduino and using it to upload sketches was not working
 
 TL;DR - If you know how to flash new firmware using another existing ISP Programmer - down the 'firmware/main.hex' and flash it onto the USB ISP device
 
