@@ -1,3 +1,5 @@
+# GETTING THIS TO WORK - USB ISP firmware hex file for Zhifengsoft clone - using the ATmega88 chipset
+
 This project is to 
 I had bought a cheap (~3USD) USB ISP v2.0 programmer to simplify my workflow.
 I am on a Mac (Monterey) and found that USB ISP was not being detected properly.
