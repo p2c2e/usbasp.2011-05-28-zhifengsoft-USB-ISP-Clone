@@ -4,7 +4,7 @@
 I had bought a cheap (~3USD) USB ISP v2.0 programmer to simplify my workflow.
 I am on a Mac (Monterey) and found that USB ISP was not being detected properly. i.e. When I select "USBasp" from within Arduino and using it to upload sketches was not working
 
-TL;DR - If you know how to flash new firmware using another existing ISP Programmer - down the 'firmware/main.hex' and flash it onto the USB ISP device
+TL;DR - If you know how to flash new firmware using another existing ISP Programmer - down the 'firmware/main.hex' and flash it onto the USB ISP device. [main.hex link](firmware/main.hex). Load using command like : <i>avrdude -cavrisp  -pm88  -P /dev/cu.usbserial-<something> -b19200  -U flash:w:main.hex:i </i>
 
 ## Symptoms:
 - "USBasp" programmer in Arduino IDE does not work
