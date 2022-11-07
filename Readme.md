@@ -66,6 +66,7 @@ https://irq5.io/2017/07/25/making-usbasp-chinese-clones-usable/
 
 ## ORIGINAL README is BELOW THIS LINE:
 --------------------------------------------------------------------------------
+```text
 This is the README file for USBasp.
 
 USBasp is a USB in-circuit programmer for Atmel AVR controllers. It simply
@@ -208,3 +209,4 @@ libusb-win32 .................... http://libusb-win32.sourceforge.net/
 
 2011-05-28 Thomas Fischl <tfischl@gmx.de>
 http://www.fischl.de
+```
